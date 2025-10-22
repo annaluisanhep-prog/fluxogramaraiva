@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profilaxia da Raiva Humana - Apresentação</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f7fd;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: #005c8a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        header h1 {
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        
+        header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .intro-section {
+            padding: 30px;
+            background: linear-gradient(to bottom, #e7f4ff, #f0f7fd);
+        }
+        
+        .intro-section h2 {
+            color: #005c8a;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .intro-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .intro-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .key-points {
+            flex: 1;
+            min-width: 300px;
+            background: #e7f4ff;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid #3498db;
+        }
+        
+        .key-points h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .key-points ul {
+            padding-left: 20px;
+        }
+        
+        .key-points li {
+            margin-bottom: 10px;
+        }
+        
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        
+        .flow-section {
+            flex: 2;
+            min-width: 300px;
+            padding: 20px;
+            border-right: 1px solid #eee;
+        }
+        
+        .calculator-section {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+        
+        .question {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: #e7f4ff;
+            border-left: 5px solid #3498db;
+            border-radius: 5px;
+        }
+        
+        .question h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .option {
+            padding: 12px 15px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: left;
+            transition: background 0.3s;
+        }
+        
+        .option:hover {
+            background: #2980b9;
+        }
+        
+        .result {
+            padding: 20px;
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        .result h3 {
+            color: #155724;
+            margin-bottom: 15px;
+        }
+        
+        .calculator {
+            margin-top: 20px;
+        }
+        
+        .calculator h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        button {
+            padding: 12px 20px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            width: 100%;
+        }
+        
+        button:hover {
+            background: #218838;
+        }
+        
+        .calculation-result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e7f4ff;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .restart {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .restart:hover {
+            background: #5a6268;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #6c757d;
+            font-size: 14px;
+        }
+        
+        .serum-info {
+            margin-top: 15px;
+            padding: 10px;
+            background: #fff3cd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        .exposure-definitions {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            border-left: 5px solid #6c757d;
+        }
+        
+        .exposure-definitions h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .exposure-definitions ul {
+            padding-left: 20px;
+        }
+        
+        .exposure-definitions li {
+            margin-bottom: 8px;
+        }
+        
+        .path-history {
+            margin-top: 15px;
+            padding: 10px;
+            background: #e9ecef;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        .info-box {
+            margin-top: 30px;
+            padding: 15px;
+            background: #fff3cd;
+            border-radius: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+            
+            .flow-section {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .intro-content {
+                flex-direction: column;
+            }
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background: #f0f0f0;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+        }
+        
+        .tab.active {
+            background: #005c8a;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Fluxograma Interativo - Profilaxia da Raiva Humana</h1>
+            <p>Baseado no Quadro Resumo do Ministério da Saúde. Idealizado pelo Núcleo Hospitalar de Epidemiologia do Hospital Regional de Brazlândia-DF.</p>
+        </header>
+        
+        <div class="intro-section">
+            <h2>Profilaxia da Raiva Humana</h2>
+            <div class="intro-content">
+                <div class="intro-text">
+                    <p>A raiva é uma doença viral aguda que afeta o sistema nervoso central de mamíferos, incluindo humanos. É quase sempre fatal após o aparecimento dos sintomas, mas pode ser prevenida através da profilaxia pós-exposição adequada.</p>
+                    <p>Esta ferramenta interativa foi desenvolvida para auxiliar profissionais de saúde na decisão sobre a profilaxia da raiva humana, baseado nas diretrizes mais recentes do Ministério da Saúde.</p>
+                </div>
+                <div class="key-points">
+                    <h3>Pontos-chave:</h3>
+                    <ul>
+                        <li>Determine a conduta com base no animal agressor e tipo de exposição</li>
+                        <li>Calcule a dosagem correta de soro antirrábico</li>
+                        <li>Visualize o esquema vacinal recomendado</li>
+                        <li>Acompanhe o histórico de decisões</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('flow')">Fluxograma Interativo</div>
+            <div class="tab" onclick="switchTab('calculator')">Calculadora de Soro</div>
+            <div class="tab" onclick="switchTab('info')">Informações</div>
+        </div>
+        
+        <div class="content">
+            <div class="tab-content active" id="flow-tab">
+                <div class="flow-section">
+                    <div class="exposure-definitions">
+                        <h4>Definições dos Tipos de Exposição:</h4>
+                        <ul>
+                            <li><strong>Contato Indireto:</strong> Tocar ou dar de comer para animais; Lambedura em pele íntegra; Contato em pele íntegra com secreções ou excreções.</li>
+                            <li><strong>Exposição Leve:</strong> Mordedura ou arranhadura superficial no tronco ou membros (exceto mãos e pés); Lambedura de lesões superficiais.</li>
+                            <li><strong>Exposição Grave:</strong> Mordedura/arranhadura nas mucosas, cabeça, mãos ou pés; Múltiplas ou extensas mordeduras; Mordedura profunda; Lambedura de lesões profundas ou mucosas.</li>
+                        </ul>
+                    </div>
+                    
+                    <div id="path-history" class="path-history" style="display: none;">
+                        <strong>Histórico:</strong> <span id="history-text"></span>
+                    </div>
+                    
+                    <div id="flow-container">
+                        <div class="question">
+                            <h3>Qual o animal agressor?</h3>
+                            <div class="options">
+                                <button class="option" onclick="selectOption('Cão ou Gato')">Cão ou Gato</button>
+                                <button class="option" onclick="selectOption('Mamífero Doméstico de Interesse Econômico')">Mamífero Doméstico de Interesse Econômico</button>
+                                <button class="option" onclick="selectOption('Mamíferos Silvestres')">Mamíferos Silvestres</button>
+                                <button class="option" onclick="selectOption('Morcegos')">Morcegos</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="result-container" class="result" style="display: none;">
+                        <h3>Conduta Recomendada</h3>
+                        <p id="result-text"></p>
+                        <div id="vaccine-info" style="margin-top: 15px; display: none;">
+                            <h4>Esquema Vacinal:</h4>
+                            <p>Quatro doses, nos dias 0, 3, 7 e 14.</p>
+                            <p><strong>Via intradérmica:</strong> 0,2 ml (dividido em duas aplicações de 0,1 ml em dois sítios distintos).</p>
+                            <p><strong>Via intramuscular:</strong> 0,5 ml ou 1,0 ml (dependendo do laboratório produtor).</p>
+                        </div>
+                    </div>
+                    <button id="restart" class="restart" style="display: none;" onclick="restartFlow()">Reiniciar Avaliação</button>
+
+                    <div class="info-box">
+                        <h4>Informações Importantes:</h4>
+                        <p>• O SAR ou IGHAR deve ser administrado no dia 0, ou o mais rápido possível até o 7º dia após a primeira dose da vacina.</p>
+                        <p>• Infiltrar o máximo possível ao redor da(s) lesão(ões). O restante deve ser administrado por via intramuscular.</p>
+                        <p>• Não aplicar no glúteo. Usar músculo deltoide ou vasto lateral da cofa em crianças menores de 2 anos.</p>
+                        <p>• Em caso de reexposição em pacientes que já fizeram pós-exposição (PEP):</p>
+                        <p>• O SAR e a IGHAR não estão indicados.</p>
+                        <p>• Até 90 dias, se o esquema anterior de PEP foi completo, não indicar profilaxia. Se foi incompleto, administrar as doses faltantes.</p>
+                        <p>• Após 90 dias, independentemente do intervalo de tempo, se o paciente recebeu pelo menos duas doses do esquema de PEP, indicar a vacina nos dias 0 e 3.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="calculator-tab">
+                <div class="calculator-section">
+                    <div class="calculator">
+                        <h3>Calculadora de Soro Antirrábico (mL)</h3>
+                        
+                        <div class="form-group">
+                            <label for="weight">Peso do Paciente (kg):</label>
+                            <input type="number" id="weight" min="0" step="0.1" placeholder="Ex: 65.5">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="serum-type">Tipo de Soro:</label>
+                            <select id="serum-type">
+                                <option value="SAR">Soro Antirrábico (SAR) - 40 UI/kg</option>
+                                <option value="IGHAR">Imunoglobulina Humana Antirrábica (IGHAR) - 20 UI/kg</option>
+                            </select>
+                        </div>
+                        
+                        <button onclick="calculateSerum()">Calcular Dosagem</button>
+                        
+                        <div id="calculation-result" class="calculation-result">
+                            <h4>Resultado do Cálculo:</h4>
+                            <p id="dosage-result"></p>
+                            <p id="administration-info"></p>
+                            <div id="ampoules-info"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="serum-info">
+                        <h4>Fórmulas de cálculo:</h4>
+                        <p><strong>SAR:</strong> Peso (kg) × 40 UI/kg ÷ 200 UI/mL = Volume em mL</p>
+                        <p><strong>IGHAR:</strong> Peso (kg) × 20 UI/kg ÷ 150 UI/mL = Volume em mL</p>
+                        <p><strong>Concentrações:</strong> SAR = 200 UI/mL | IGHAR = 150 UI/mL</p>
+                        <p><strong>Apresentações:</strong> SAR (5mL = 1000UI) | IGHAR (2mL = 300UI, 5mL = 750UI, 10mL = 1500UI)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="info-tab">
+                <div class="flow-section">
+                    <h3>Informações sobre a Profilaxia da Raiva</h3>
+                    <p>A raiva é uma doença viral que afeta o sistema nervoso central, sendo quase sempre fatal após o início dos sintomas. A profilaxia pós-exposição é a única medida eficaz para prevenir a doença.</p>
+                    
+                    <div class="exposure-definitions">
+                        <h4>Conduta Inicial para Todas as Exposições:</h4>
+                        <p>Lavar imediatamente e abundantemente o local da lesão com água e sabão.</p>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>Esquema Vacinal:</h4>
+                        <p>O esquema vacinal para raiva humana consiste em 4 doses, aplicadas nos dias 0, 3, 7 e 14 após a exposição.</p>
+                        <p><strong>Via intradérmica:</strong> 0,2 ml (dividido em duas aplicações de 0,1 ml em dois sítios distintos).</p>
+                        <p><strong>Via intramuscular:</strong> 0,5 ml ou 1,0 ml (dependendo do laboratório produtor).</p>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>Administração do Soro:</h4>
+                        <p>• O soro (SAR ou IGHAR) deve ser administrado no dia 0, ou o mais rápido possível até o 7º dia após a primeira dose da vacina.</p>
+                        <p>• Infiltrar o máximo possível ao redor da(s) lesão(ões). O restante deve ser administrado por via intramuscular.</p>
+                        <p>• Não aplicar no glúteo. Usar músculo deltoide ou vasto lateral da cofa em crianças menores de 2 anos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Baseado no documento "Quadro Resumo Profilaxia Raiva Atualizado MS" do Ministério da Saúde do Brasil</p>
+            <p>Este é um instrumento de apoio. Sempre consulte o protocolo oficial e um profissional de saúde.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Estado do fluxograma
+        let currentState = {
+            animal: null,
+            exposure: null,
+            observation: null
+        };
+        
+        let pathHistory = [];
+        
+        // Estrutura do fluxograma - CORRIGIDA conforme o documento
+        const flowLogic = {
+            // Animais
+            'Cão ou Gato': {
+                question: 'Qual o tipo de exposição?',
+                options: [
+                    { text: 'Contato Indireto', next: 'observation_indirect' },
+                    { text: 'Exposição Leve', next: 'observation_mild' },
+                    { text: 'Exposição Grave', next: 'observation_severe' }
+                ]
+            },
+            'Mamífero Doméstico de Interesse Econômico': {
+                question: 'Qual o tipo de exposição?',
+                options: [
+                    { text: 'Contato Indireto', result: 'Lavar com água e sabão. NÃO INDICAR PROFILAXIA.' },
+                    { text: 'Exposição Leve', result: 'Lavar com água e sabão. INICIAR PROFILAXIA: VACINA (dias 0, 3, 7 e 14).' },
+                    { text: 'Exposição Grave', result: 'Lavar com água e sabão. INICIAR PROFILAXIA: VACINA (dias 0, 3, 7 e 14) e SORO (SAR ou IGHAR).' }
+                ]
+            },
+            'Mamíferos Silvestres': {
+                question: 'Qual o tipo de exposição?',
+                options: [
+                    { text: 'Contato Indireto', result: 'Lavar com água e sabão. NÃO INDICAR PROFILAXIA.' },
+                    { text: 'Exposição Leve', result: 'Lavar com água e sabão. INICIAR PROFILAXIA: VACINA (dias 0, 3, 7 e 14) e SORO (SAR ou IGHAR).' },
+                    { text: 'Exposição Grave', result: 'Lavar com água e sabão. INICIAR PROFILAXIA: VACINA (dias 0, 3, 7 e 14) e SORO (SAR ou IGHAR).' }
+                ]
+            },
+            'Morcegos': {
+                question: 'Qual o tipo de exposição?',
+                options: [
+                    { text: 'Contato Indireto', result: 'Lavar com água e sabão. INICIAR PROFILAXIA: VACINA (dias 0, 3, 7 e 14) e SORO (SAR ou IGHAR).' },
+                    { text: 'Exposição Leve', result: 'Lavar com água e sabão. INICIAR PROFILAXIA: VACINA (dias 0, 3, 7 e 14) e SORO (SAR ou IGHAR).' },
+                    { text: 'Exposição Grave', result: 'Lavar com água e sabão. INICIAR PROFILAXIA: VACINA (dias 0, 3, 7 e 14) e SORO (SAR ou IGHAR).' }
+                ]
+            },
+            
+            // Observação para cão/gato - contato indireto
+            'observation_indirect': {
+                question: 'O animal é passível de observação por 10 dias e sem sinais sugestivos de raiva?',
+                options: [
+                    { 
+                        text: 'Sim', 
+                        result: 'Lavar com água e sabão. NÃO INDICAR PROFILAXIA.'
+                    },
+                    { 
+                        text: 'Não', 
+                        result: 'Lavar com água e sabão. NÃO INDICAR PROFILAXIA.'
+                    }
+                ]
+            },
+            
+            // Observação para cão/gato - caso leve
+            'observation_mild': {
+                question: 'O animal é passível de observação por 10 dias e sem sinais sugestivos de raiva?',
+                options: [
+                    { 
+                        text: 'Sim', 
+                        result: 'Lavar com água e sabão. NÃO INICIAR PROFILAXIA. Manter o animal em observação por 10 dias. Se permanecer vivo e saudável, suspender a observação no 10º dia e encerrar o caso. Se morrer, desaparecer ou apresentar sinais de raiva, indicar VACINA (dias 0, 3, 7 e 14).'
+                    },
+                    { 
+                        text: 'Não', 
+                        result: 'Lavar com água e sabão. INICIAR PROFILAXIA: VACINA (dias 0, 3, 7 e 14).'
+                    }
+                ]
+            },
+            
+            // Observação para cão/gato - caso grave
+            'observation_severe': {
+                question: 'O animal é passível de observação por 10 dias e sem sinais sugestivos de raiva?',
+                options: [
+                    { 
+                        text: 'Sim', 
+                        result: 'Lavar com água e sabão. NÃO INICIAR PROFILAXIA. Manter o animal em observação por 10 dias. Se permanecer vivo e saudável, suspender a observação no 10º dia e encerrar o caso. Se morrer, desaparecer ou apresentar sinais de raiva, indicar VACINA (dias 0, 3, 7 e 14) e SORO (SAR ou IGHAR).'
+                    },
+                    { 
+                        text: 'Não', 
+                        result: 'Lavar com água e sabão. INICIAR PROFILAXIA: VACINA (dias 0, 3, 7 e 14) e SORO (SAR ou IGHAR).'
+                    }
+                ]
+            }
+        };
+        
+        // Função para alternar entre abas
+        function switchTab(tabId) {
+            // Esconder todas as abas
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Mostrar a aba selecionada
+            document.getElementById(tabId + '-tab').classList.add('active');
+            
+            // Atualizar a navegação de abas
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Ativar a aba clicada
+            event.currentTarget.classList.add('active');
+        }
+        
+        // Função para selecionar uma opção no fluxograma
+        function selectOption(option) {
+            if (!currentState.animal) {
+                // Seleção do animal
+                currentState.animal = option;
+                pathHistory.push(`Animal: ${option}`);
+                showQuestion(option);
+            } else if (!currentState.exposure) {
+                // Seleção do tipo de exposição
+                currentState.exposure = option;
+                pathHistory.push(`Exposição: ${option}`);
+                
+                if (currentState.animal === 'Cão ou Gato') {
+                    let nextStep;
+                    if (option === 'Contato Indireto') nextStep = 'observation_indirect';
+                    else if (option === 'Exposição Leve') nextStep = 'observation_mild';
+                    else nextStep = 'observation_severe';
+                    
+                    showQuestion(nextStep);
+                } else {
+                    showResult(option);
+                }
+            } else if (!currentState.observation) {
+                // Seleção da opção de observação (apenas para cães/gatos)
+                currentState.observation = option;
+                pathHistory.push(`Observação: ${option}`);
+                showResult(option);
+            }
+            
+            updateHistoryDisplay();
+        }
+        
+        // Atualiza o histórico de caminho percorrido
+        function updateHistoryDisplay() {
+            const historyElement = document.getElementById('path-history');
+            const historyTextElement = document.getElementById('history-text');
+            
+            if (pathHistory.length > 0) {
+                historyElement.style.display = 'block';
+                historyTextElement.textContent = pathHistory.join(' → ');
+            } else {
+                historyElement.style.display = 'none';
+            }
+        }
+        
+        // Função para exibir uma pergunta
+        function showQuestion(stepKey) {
+            const step = flowLogic[stepKey];
+            let optionsHTML = '';
+            
+            step.options.forEach(option => {
+                optionsHTML += `<button class="option" onclick="selectOption('${option.text}')">${option.text}</button>`;
+            });
+            
+            document.getElementById('flow-container').innerHTML = `
+                <div class="question">
+                    <h3>${step.question}</h3>
+                    <div class="options">
+                        ${optionsHTML}
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Função para exibir o resultado
+        function showResult(option) {
+            let resultText = '';
+            let needsVaccine = false;
+            let needsSerum = false;
+            
+            if (currentState.animal === 'Cão ou Gato') {
+                // Para cães/gatos, o resultado depende da combinação de exposição e observação
+                let stepKey;
+                if (currentState.exposure === 'Contato Indireto') stepKey = 'observation_indirect';
+                else if (currentState.exposure === 'Exposição Leve') stepKey = 'observation_mild';
+                else stepKey = 'observation_severe';
+                
+                const step = flowLogic[stepKey];
+                
+                step.options.forEach(opt => {
+                    if (opt.text === option) {
+                        resultText = opt.result;
+                        needsVaccine = resultText.includes('VACINA');
+                        needsSerum = resultText.includes('SORO');
+                    }
+                });
+            } else {
+                // Para outros animais, o resultado depende apenas da exposição
+                const step = flowLogic[currentState.animal];
+                
+                step.options.forEach(opt => {
+                    if (opt.text === option) {
+                        resultText = opt.result;
+                        needsVaccine = resultText.includes('VACINA');
+                        needsSerum = resultText.includes('SORO');
+                    }
+                });
+            }
+            
+            document.getElementById('result-text').textContent = resultText;
+            
+            // Mostrar informações da vacina se necessário
+            if (needsVaccine) {
+                document.getElementById('vaccine-info').style.display = 'block';
+            } else {
+                document.getElementById('vaccine-info').style.display = 'none';
+            }
+            
+            document.getElementById('result-container').style.display = 'block';
+            document.getElementById('restart').style.display = 'block';
+            document.getElementById('flow-container').style.display = 'none';
+        }
+        
+        // Função para reiniciar o fluxograma
+        function restartFlow() {
+            currentState = {
+                animal: null,
+                exposure: null,
+                observation: null
+            };
+            
+            pathHistory = [];
+            updateHistoryDisplay();
+            
+            document.getElementById('flow-container').innerHTML = `
+                <div class="question">
+                    <h3>Qual o animal agressor?</h3>
+                    <div class="options">
+                        <button class="option" onclick="selectOption('Cão ou Gato')">Cão ou Gato</button>
+                        <button class="option" onclick="selectOption('Mamífero Doméstico de Interesse Econômico')">Mamífero Doméstico de Interesse Econômico</button>
+                        <button class="option" onclick="selectOption('Mamíferos Silvestres')">Mamíferos Silvestres</button>
+                        <button class="option" onclick="selectOption('Morcegos')">Morcegos</button>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('result-container').style.display = 'none';
+            document.getElementById('restart').style.display = 'none';
+            document.getElementById('flow-container').style.display = 'block';
+        }
+        
+        // Função para calcular a dosagem do soro em mL
+        function calculateSerum() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const serumType = document.getElementById('serum-type').value;
+            
+            if (isNaN(weight) || weight <= 0) {
+                alert('Por favor, insira um peso válido.');
+                return;
+            }
+            
+            let dosageUI, dosagePerKg, concentration, resultText, administrationInfo, dosageML;
+            let ampoulesInfo = '';
+            
+            if (serumType === 'SAR') {
+                dosagePerKg = 40; // UI/kg
+                dosageUI = weight * dosagePerKg;
+                concentration = 200; // UI/mL
+                dosageML = dosageUI / concentration;
+                
+                // Calcular número de ampolas (cada ampola de SAR tem 5mL = 1000UI)
+                const ampoulesNeeded = Math.ceil(dosageUI / 1000);
+                const totalVolume = ampoulesNeeded * 5;
+                const excessVolume = (totalVolume - dosageML).toFixed(1);
+                
+                resultText = `Dosagem de SAR: ${dosageML.toFixed(1)} mL (${dosageUI.toFixed(0)} UI)`;
+                administrationInfo = `Administrar ${dosageML.toFixed(1)} mL de Soro Antirrábico (SAR) - ${dosagePerKg} UI/kg para um paciente de ${weight} kg.`;
+                
+                ampoulesInfo = `<p>Será necessário utilizar ${ampoulesNeeded} ampolas de SAR (5mL = 1000UI cada).</p>`;
+                if (excessVolume > 0) {
+                    ampoulesInfo += `<p>Desprezar ${excessVolume} mL após a administração.</p>`;
+                }
+            } else {
+                dosagePerKg = 20; // UI/kg
+                dosageUI = weight * dosagePerKg;
+                concentration = 150; // UI/mL
+                dosageML = dosageUI / concentration;
+                
+                // Calcular número de ampolas (IGHAR tem apresentações variadas)
+                let ampoulesNeeded, presentation;
+                if (dosageUI <= 300) {
+                    ampoulesNeeded = 1;
+                    presentation = "2mL = 300UI";
+                } else if (dosageUI <= 750) {
+                    ampoulesNeeded = 1;
+                    presentation = "5mL = 750UI";
+                } else if (dosageUI <= 1500) {
+                    ampoulesNeeded = 1;
+                    presentation = "10mL = 1500UI";
+                } else {
+                    ampoulesNeeded = Math.ceil(dosageUI / 1500);
+                    presentation = "10mL = 1500UI";
+                }
+                
+                resultText = `Dosagem de IGHAR: ${dosageML.toFixed(1)} mL (${dosageUI.toFixed(0)} UI)`;
+                administrationInfo = `Administrar ${dosageML.toFixed(1)} mL de Imunoglobulina Humana Antirrábica (IGHAR) - ${dosagePerKg} UI/kg para um paciente de ${weight} kg.`;
+                
+                ampoulesInfo = `<p>Será necessário utilizar ${ampoulesNeeded} ${ampoulesNeeded > 1 ? 'ampolas' : 'ampola'} de IGHAR (${presentation}).</p>`;
+            }
+            
+            document.getElementById('dosage-result').textContent = resultText;
+            document.getElementById('administration-info').textContent = administrationInfo;
+            document.getElementById('ampoules-info').innerHTML = ampoulesInfo;
+            document.getElementById('calculation-result').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
